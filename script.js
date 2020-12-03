@@ -20,13 +20,15 @@ function onPageLoaded() {
 		ul.appendChild(li).append(textSpan, deleteBtn);
 		input.value = "";
 		listenDeleteTodo(deleteBtn);
-	}
+  }
+  
 	function listenDeleteTodo(element) {
 		element.addEventListener("click", (event) => {
 			element.parentElement.remove();
 			event.stopPropagation();
 		});
-	}
+  }
+  
 	input.addEventListener("keypress", (keyPressed) => {
 		const keyEnter = 13;
 		if (keyPressed.which == keyEnter) {
