@@ -1,6 +1,7 @@
 function onPageLoaded() {
 	const input = document.querySelector(".todo_input");
-	const ul = document.querySelector("ul.todo_list");
+  const ul = document.querySelector("ul.todo_list");
+  const btn = document.querySelector(".todo_btn")
 
 	function createTodo() {
 		const li = document.createElement("li");
@@ -31,7 +32,16 @@ function onPageLoaded() {
 		if (keyPressed.which == keyEnter) {
 			createTodo();
 		}
-	});
+  });
+
+  btn.addEventListener("click", () => {
+		
+		if (input.value) {
+			createTodo();
+		}
+  });
+
+  
 	ul.addEventListener("click", onClickTodo);
 }
 
