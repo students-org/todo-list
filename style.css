@@ -4,7 +4,7 @@ body {
   background: #cfcdab;
 }
 
-.todo_title {
+.todo-title {
 	margin-top: 65px;
 	margin-bottom: 60px;
 	text-align: center;
@@ -20,7 +20,7 @@ body {
 	position: relative;
 }
 
-.todo_input {
+.todo-input {
 	background: white;
 	width: 85%;
 	box-sizing: border-box;
@@ -33,12 +33,12 @@ body {
 	color: gray;
 	outline: none;
 }
-.todo_input:hover,
-.todo_input:focus {
+.todo-input:hover,
+.todo-input:focus {
 	border-bottom-color: #86a8e7;
 }
 
-.todo_btn {
+.todo-btn {
   border-radius: 6px;
 	width: 75px;
 	height: 35px;
@@ -46,14 +46,14 @@ body {
 	font-size: 14px;
 }
 
-.todo_list {
+.todo-list {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
 
-.todo_list-item {
+.todo-list-item {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -63,13 +63,13 @@ body {
 	line-height: 50px;
 	font-size: 20px;
 }
-.todo_list-item:hover {
+.todo-list-item:hover {
 	background: #edf1f5;
 }
-.todo_list-item-text {
+.todo-list-item-text {
 	padding: 0 8px;
 }
-.todo_list-item-trash {
+.todo-list-item-trash {
 	border-radius: 6px;
 	width: 75px;
 	height: 35px;
@@ -77,8 +77,8 @@ body {
 	font-size: 14px;
 }
 
-.todo_list-item-trash:hover,
-.todo_list-item-trash:focus {
+.todo-list-item-trash:hover,
+.todo-list-item-trash:focus {
 	cursor: pointer;
 	border-color: #86a8e7;
 	outline: none;

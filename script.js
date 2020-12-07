@@ -1,50 +1,40 @@
-function onPageLoaded() {
-	const input = document.querySelector(".todo_input");
-  const ul = document.querySelector("ul.todo_list");
-  const btn = document.querySelector(".todo_btn")
 
-	function createTodo() {
-		const li = document.createElement("li");
-		li.classList.add("todo_list-item");
-		const textSpan = document.createElement("span");
-		textSpan.classList.add("todo_list-item-text");
-		const newTodo = input.value;
-		textSpan.append(newTodo);
+	const input = document.querySelector(".todo-input"),
+  ul = document.querySelector("ul.todo-list"),
+  btn = document.querySelector(".todo-btn"),
+  form = document.querySelector(".todo");
 
-		const deleteBtn = document.createElement("button");
-		deleteBtn.classList.add("todo__list-item-trash");
-		const icon = document.createElement("i");
-		icon.classList.add("todo__list-item-trash-icon", "fas", "fa-trash-alt");
-		deleteBtn.appendChild(icon);
+function createTodo() {
+const li = document.createElement("li"),
+    newTodo = input.value;
 
-		ul.appendChild(li).append(textSpan, deleteBtn);
-		input.value = "";
-		listenDeleteTodo(deleteBtn);
-  }
-  
-	function listenDeleteTodo(element) {
-		element.addEventListener("click", (event) => {
-			element.parentElement.remove();
-			event.stopPropagation();
-		});
-  }
-  
-	input.addEventListener("keypress", (keyPressed) => {
-		const keyEnter = 13;
-		if (keyPressed.which == keyEnter) {
-			createTodo();
-		}
-  });
+li.innerHTML =` <li class="todo-list-item"> 
 
-  btn.addEventListener("click", () => {
-		
-		if (input.value) {
-			createTodo();
-		}
-  });
+  <span class="todo-list-item-text">${newTodo}</span> 
 
-  
-	ul.addEventListener("click", onClickTodo);
+  <button class="todo-list-item-trash">
+  <i class="fas fa-trash-alt"></i>
+  </button> 
+
+</li>`;
+
+input.value = "";
+listenDeleteTodo(button);
+
 }
 
-document.addEventListener("DOMContentLoaded", onPageLoaded);
+function listenDeleteTodo(element) {
+element.addEventListener("click", (event) => {
+element.parentElement.remove();
+event.stopPropagation();
+});
+}
+
+form.addEventListener("submit", (event) => {
+event.preventDefault();
+if (input.value) {
+createTodo();
+}
+});
+
+
