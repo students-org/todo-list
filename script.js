@@ -1,22 +1,26 @@
-const input = document.querySelector(".todo-input");
-const ul = document.querySelector("ul.todo-list");
-const form = document.querySelector(".todo");
+const TODOs = document.querySelectorAll("[data-todo]");
 
-function createTodo() {
-  ul.insertAdjacentHTML("afterbegin", 
+function Task (ul, name){
+  this.ul = todo.querySelector("[data-list]");
+  this.name = name;
+  this.listenDeleteTodo();
+}
+
+Task.prototype.getList = function(){
+  this.ul.insertAdjacentHTML("afterbegin", 
   `
-    <li data-list-item class="todo-list-item"> 
-      <span class="todo-list-item-text">${input.value}</span> 
+    <li data-list-item class="todo-list__item"> 
+      <span class="todo-list__text">${this.name}</span> 
 
-      <button data-button class="todo-list-item-trash">
+      <button data-button class="btn">
         <i class="fas fa-trash-alt"></i>
       </button> 
     </li>
   ` 
   );
-}
+};
 
-(function listenDeleteTodo() {
+Task.prototype.listenDeleteTodo = function(){
   document.addEventListener("click", (event) => {  
     const btn = event.target.closest("[data-button]");
 
@@ -24,16 +28,27 @@ function createTodo() {
       btn.closest("[data-list-item]").remove();
     }
   });
-})();
+};
 
+function ToDoList ( form ){
+ this.form = todo.querySelector("[data-form]")
+}
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+ToDoList.prototype.addTask = function(){
+  this.form.addEventListener("submit", (event) => {
+    const input = event.target.querySelector("[name=name]");
 
-  if (input.value) {
-    createTodo();
-    input.value = "";
-  }
+    event.preventDefault();
+    
+    if (input.value) {
+      let task = new Task;
+      task.getList();
+      input.value = "";
+    }
+  });
+};
+
+TODOs.forEach((todo) => {
+  let list = new ToDoList();
+  list.addTask();
 });
-
-

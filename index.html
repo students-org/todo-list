@@ -10,13 +10,28 @@
   <title>TODO_List</title>
 </head>
 <body>
-  <form class="todo" id="todo">
-		<h2 class="todo-title">Мой список дел</h2>
-    <input class="todo-input" type="text" placeholder="Добавить задачу">
-    <button class="todo-btn">ok</button>
-		<ul class="todo-list"></ul>
-	</form>
-  
- 
+ <div data-todo class="todo-wrapper">
+   <h2 class="todo-title">Мой список дел</h2>
+
+    <form data-form class="todo">
+      <input name="name" class="todo__input" placeholder="Добавить задачу">
+      <button class="btn">ok</button>
+    </form>
+
+    <ul data-list class="todo-list"></ul>
+ </div>
+
+ <div data-todo class="todo-wrapper">
+    <h2 class="todo-title">Мой список дел</h2>
+
+    <form data-form class="todo">
+      <input name="name" class="todo__input" placeholder="Добавить задачу">
+      <button class="btn">ok</button>
+    </form>
+
+    <ul data-list class="todo-list"></ul>
+</div>
+
+
 </body>
 </html>
