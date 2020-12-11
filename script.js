@@ -31,16 +31,16 @@ const TODOs = document.querySelectorAll("[data-todo]");
     event.preventDefault();
     
     if (input.value) {
-      addTask();
+      addTask(input.value);
       input.value = "";
     }
   });
 }
 
-TODOs.forEach((todo) => {
+TODOs.forEach((tasksList) => {
   createToDo({ 
-    ul: todo.querySelector("[data-list]"),
-    form: todo.querySelector("[data-form]")
+    ul: tasksList.querySelector("[data-list]"),
+    form: tasksList.querySelector("[data-form]")
   });
 });
 
