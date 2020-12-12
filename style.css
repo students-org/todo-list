@@ -4,22 +4,28 @@ body {
   background: #cfcdab;
 }
 
-.todo-title {
+.todo{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.todo__title {
 	margin-top: 65px;
 	margin-bottom: 60px;
 	text-align: center;
 }
 
-.todo {
-	margin: 0 auto;
-	box-shadow: 0 0 1em black;
-	max-width: 700px;
-	height: 100%;
-	background: white;
-	position: relative;
+.todo__form {
+	width: 700px;
 }
 
-.todo__input {
+.todo-form {
+	box-shadow: 0 0 1em black;
+	background: white;
+}
+
+.todo-form__input {
 	background: white;
 	width: 85%;
 	box-sizing: border-box;
@@ -32,18 +38,20 @@ body {
 	color: gray;
 	outline: none;
 }
-.todo__input:hover,
-.todo__input:focus {
+.todo-form__input:hover,
+.todo-form__input:focus {
 	border-bottom-color: #86a8e7;
 }
 
 .todo-list {
-	margin: 0 auto;
-	max-width: 700px;
 	list-style-type: none;
 	padding: 0;
 }
 
+.todo__list {
+	margin: 0;
+	width: 700px;
+}
 
 .todo-list__item {
 	display: flex;
