@@ -4,6 +4,12 @@ body {
   background: #cfcdab;
 }
 
+.todo{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 .todo__title {
 	margin-top: 65px;
 	margin-bottom: 60px;
@@ -11,8 +17,7 @@ body {
 }
 
 .todo__form {
-	margin: 0 auto;
-	max-width: 700px;
+	width: 700px;
 }
 
 .todo-form {
@@ -44,8 +49,8 @@ body {
 }
 
 .todo__list {
-	margin: 0 auto;
-	max-width: 700px;
+	margin: 0;
+	width: 700px;
 }
 
 .todo-list__item {
