@@ -1,5 +1,5 @@
-import TasksList from "./tasksList";
-import Task from "./task";
+import TasksList from "./tasksList.js";
+import Task from "./task.js";
 
 const tasksListEl = document.querySelector("[data-todo]");
 
