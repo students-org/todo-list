@@ -1,0 +1,20 @@
+{
+  "name": "todo-list",
+  "version": "0.1.0",
+  "description": "Tasks manager",
+  "main": "script.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikitheArtist/todo-list.git"
+  },
+  "author": "Helen",
+  "url": "https://github.com/MikitheArtist/todo-list/issues",
+  "homepage": "https://github.com/MikitheArtist/todo-list#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2"
+  }
+}
