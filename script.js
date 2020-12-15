@@ -1,3 +1,5 @@
+"use strict";
+
 import TasksList from "./tasksList.js";
 import Task from "./task.js";
 
@@ -14,5 +16,3 @@ const tasksList = new TasksList({
   form: tasksListEl.querySelector("[data-form]"),
   tasks 
 });
-
-tasksList.init();

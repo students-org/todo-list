@@ -1,3 +1,5 @@
+"use strict";
+
 import Task from "./task.js";
 
 export default class TasksList {
@@ -22,15 +24,17 @@ export default class TasksList {
       }
     });
   
-    this.tasks.forEach(this.addTask);
+    this.tasks.forEach((task) => {
+      this.addTask(task);
+    });
 
-    deleteTask();
+    this.deleteTask();
 
-    checkTask();
+    this.checkTask();
   }
 
   deleteTask(){
-    document.addEventListener("click", (event) => {  
+    this.ul.addEventListener("click", (event) => {  
       const btn = event.target.closest("[data-button]");
   
       if (btn) {
@@ -40,7 +44,7 @@ export default class TasksList {
   }
 
   checkTask(){
-    document.addEventListener("click", (event) => {  
+    this.ul.addEventListener("click", (event) => {  
       const check = event.target.closest("[data-checkbox]");
   
       if (check && input.value) {
@@ -51,7 +55,9 @@ export default class TasksList {
 
   addTask ({ name }){
     const task = new Task({ name });
+    console.log(this)
   
     this.ul.insertAdjacentHTML("afterbegin", task.getHTML());
+    
   }
 }
