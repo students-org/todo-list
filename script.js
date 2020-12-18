@@ -1,13 +1,15 @@
 "use strict";
 
-import TasksList from "./tasksList.js";
+import TasksList from "./tasks-list.js";
 import Task from "./task.js";
 
 const tasksListEl = document.querySelector("[data-todo]");
 
 const tasks = [
   {
-    name: "Learn Java Script"
+    id: Math.random(),
+    name: "Learn Java Script",
+    isDone: true
   }
 ];
 
