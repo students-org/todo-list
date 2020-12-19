@@ -3,7 +3,7 @@ const browserSync = require('browser-sync').create();
 
 gulp.task('serve', function () {
   browserSync.init({
-    server: './',
+    server: './public',
     port: 8080
   });
 
