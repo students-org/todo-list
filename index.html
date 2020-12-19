@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bad+Script">
-  <link rel="stylesheet" href="./style.css">
-  <script defer src="./script.js"></script>
-  <title>TODO_List</title>
-</head>
-<body>
- <div data-todo class="todo-wrapper">
-   <h2 class="todo-title">Мой список дел</h2>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bad+Script">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js" type="module"></script>
+    <title>TODO List</title>
+  </head>
 
-    <form data-form class="todo">
-      <input name="name" class="todo__input" placeholder="Добавить задачу">
-      <button class="btn">ok</button>
-    </form>
+  <body>
+    <div data-tasks-list class="todo">
+      <h2 class="todo__title">Мой список дел</h2>
 
-    <ul data-list class="todo-list"></ul>
- </div>
+      <form data-task-form class="todo-form todo__form">
+        <input
+          autocomplete="off"
+          class="todo-form__input"
+          name="name"
+          placeholder="Добавить задачу..."
+        />
 
- <div data-todo class="todo-wrapper">
-    <h2 class="todo-title">Мой список дел</h2>
+        <button class="button" title="Добавить задачу">
+          <i class="fas fa-plus"></i>
+        </button>
+      </form>
 
-    <form data-form class="todo">
-      <input name="name" class="todo__input" placeholder="Добавить задачу">
-      <button class="btn">ok</button>
-    </form>
-
-    <ul data-list class="todo-list"></ul>
-</div>
-
-
-</body>
+       <ul data-list class="todo-list todo__list"></ul>
+    </div>
+  </body>
 </html>
