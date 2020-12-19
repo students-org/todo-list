@@ -1,20 +1,13 @@
-"use strict";
-
+import { generateID } from './helpers/generateID.js';
 import TasksList from "./tasks-list.js";
-import Task from "./task.js";
 
-const tasksListEl = document.querySelector("[data-todo]");
-
-const tasks = [
-  {
-    id: Math.random(),
-    name: "Learn Java Script",
-    isDone: true
-  }
-];
-
-const tasksList = new TasksList({ 
-  ul: tasksListEl.querySelector("[data-list]"),
-  form: tasksListEl.querySelector("[data-form]"),
-  tasks 
+new TasksList({
+  rootEl: document.querySelector("[data-tasks-list]"),
+  tasks: [
+    {
+      id: generateID(),
+      name: "Learn Java Script",
+      isDone: false
+    }
+  ]
 });

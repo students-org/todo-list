@@ -1,89 +1,71 @@
-"use strict";
-
 import Task from "./task.js";
 
 export default class TasksList {
-  constructor ({ ul, form, tasks }){
-    this.ul = ul;
-    this.form = form;
-    this.tasks = tasks;
-  
+  constructor({ rootEl, tasks = [] }) {
+    this.rootEl = rootEl;
+    this.listEl = rootEl.querySelector("[data-list]");
+    this.tasks = tasks.map((task) => new Task(task));
+
     this.init();
   }
-  
-  init (){  
-    this.form.addEventListener("submit", (event) => {
-      const input = event.target.querySelector("[name=name]");
-  
-      event.preventDefault();
-      
-      if (input.value) {
-        this.addTask(
-          {
-            name: input.value,
-          });
 
-  
+  init() {
+    this.bindDomEvents();
+    this.render();
+  }
+
+  deleteTask(taskID) {
+    this.tasks = this.tasks.filter(({ id }) => id !== taskID);
+
+    this.render();
+  }
+
+  toggleTaskIsDone(taskID) {
+    this.tasks = this.tasks.map((task) => {
+      return task.id === taskID ? task.toggleIsDone() : task;
+    });
+
+    this.render();
+  }
+
+  addTask(taskData) {
+    this.tasks.push(new Task(taskData));
+
+    this.render();
+  }
+
+  bindDomEvents() {
+    const formEl = this.rootEl.querySelector("[data-task-form]");
+
+    formEl.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const input = formEl.querySelector("[name=name]");
+
+      if (input.value) {
+        this.addTask({
+          name: input.value,
+        });
+
         input.value = "";
       }
     });
-  
-    // this.tasks.forEach((task) => {
-    //   this.addTask(task);
-    // });
 
-    this.deleteTask();
-
-    this.checkTask();
-  }
-
-  deleteTask(){
-    this.ul.addEventListener("click", (event) => {  
-      const btn = event.target.closest("[data-button]");
-  
-      if (btn) {
-        btn.closest("[data-task]").remove();
-      }
-    });
-  }
-
-  checkTask(){
-    this.ul.addEventListener("click", (event) => {  
+    this.rootEl.addEventListener("click", (event) => {
+      const deleteButtonEl = event.target.closest("[data-delete-button]");
       const checkboxEl = event.target.closest("[data-checkbox]");
-     
-      // if (check && input.value) {
-      //   this.name.style.textDecoration = lineThrought;
-      // }
+
+      if (deleteButtonEl) {
+        this.deleteTask(deleteButtonEl.closest("[data-task]").dataset.task);
+      } else if (checkboxEl) {
+        event.preventDefault();
+
+        this.toggleTaskIsDone(checkboxEl.closest("[data-task]").dataset.task);
+      }
     });
   }
 
-  addTask ({ name }){
-    const task = new Task(
-      { 
-        ul: this.ul,
-        tasks: [
-          {
-            id: Math.random(),
-            name: name,
-            isDone: false
-          }
-        ],
-        getHTML: function(props){
-          return `
-            <li class="todo-list__item" data-task=${props.tasks.id} > 
-              <input class="todo-form__checkbox" data-checkbox type="checkbox" checked=${props.tasks.isDone}">
-              <span class="todo-list__text">${props.tasks.name}</span> 
-              <button class="btn" data-button>
-                <i class="fas fa-trash-alt"></i>
-              </button> 
-            </li>
-          `;
-        }
-      
-      }
-    );
-    
-    task.render();
-    
+  render() {
+    this.listEl.innerHTML = this.tasks.map((task) => task.getHTML()).join('');
   }
 }
