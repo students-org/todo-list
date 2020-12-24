@@ -1,23 +1,24 @@
-import Task from "./task.js";
+import { generateID } from './helpers/index.js';
+import { Task } from "./task.js";
 
-export default class TasksList {
-  constructor({ rootEl, tasks = [] }) {
-    this.rootEl = rootEl;
-    this.listEl = rootEl.querySelector("[data-list]");
+export class TasksList {
+  constructor({ id = generateID(), name, tasks = [], onChange = () => {} }) {
+    this.id = id;
+    this.name = name;
     this.tasks = tasks.map((task) => new Task(task));
+    this.onChange = onChange;
 
     this.init();
   }
 
   init() {
     this.bindDomEvents();
-    this.render();
   }
 
   deleteTask(taskID) {
     this.tasks = this.tasks.filter(({ id }) => id !== taskID);
 
-    this.render();
+    this.onChange();
   }
 
   toggleTaskIsDone(taskID) {
@@ -25,33 +26,35 @@ export default class TasksList {
       return task.id === taskID ? task.toggleIsDone() : task;
     });
 
-    this.render();
+    this.onChange();
   }
 
   addTask(taskData) {
     this.tasks.push(new Task(taskData));
 
-    this.render();
+    this.onChange();
   }
 
   bindDomEvents() {
-    const formEl = this.rootEl.querySelector("[data-task-form]");
-
-    formEl.addEventListener("submit", (event) => {
+    document.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const input = formEl.querySelector("[name=name]");
+      const listID = event.target.closest("[data-tasks-list]").dataset.tasksList;
 
-      if (input.value) {
-        this.addTask({
-          name: input.value,
-        });
+      if (listID === this.id) {
+        const input = event.target.querySelector("[name=name]");
 
-        input.value = "";
+        if (input?.value) {
+          this.addTask({
+            name: input.value,
+          });
+
+          input.value = "";
+        }
       }
     });
 
-    this.rootEl.addEventListener("click", (event) => {
+    document.addEventListener("click", (event) => {
       const deleteButtonEl = event.target.closest("[data-delete-button]");
       const checkboxEl = event.target.closest("[data-checkbox]");
 
@@ -65,7 +68,28 @@ export default class TasksList {
     });
   }
 
-  render() {
-    this.listEl.innerHTML = this.tasks.map((task) => task.getHTML()).join('');
+  getHTML() {
+    return `
+      <div data-tasks-list=${this.id} class="todo">
+        <h2 class="todo__title">${this.name}</h2>
+  
+        <form data-task-form class="todo-form todo__form">
+          <input
+            autocomplete="off"
+            class="todo-form__input"
+            name="name"
+            placeholder="Добавить задачу..."
+          />
+  
+          <button class="button" title="Добавить задачу">
+            <i class="fas fa-plus"></i>
+          </button>
+        </form>
+  
+         <ul data-list class="todo-list todo__list">
+           ${this.tasks.map((task) => task.getHTML()).join('')}
+         </ul>
+      </div>
+    `;
   }
 }
