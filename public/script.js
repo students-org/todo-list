@@ -1,13 +1,16 @@
-import { generateID } from './helpers/generateID.js';
-import TasksList from "./tasks-list.js";
+import { TasksBoard } from "./tasks-board.js";
 
-new TasksList({
-  rootEl: document.querySelector("[data-tasks-list]"),
-  tasks: [
+window.tasksBoard = new TasksBoard({
+  rootEl: document.querySelector("[data-tasks-board]"),
+  lists: [
     {
-      id: generateID(),
-      name: "Learn Java Script",
-      isDone: false
+      name: 'My first tasks list',
+      tasks: [
+        {
+          name: "Learn Java Script",
+          isDone: false
+        }
+      ]
     }
   ]
 });
