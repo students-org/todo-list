@@ -1,6 +1,6 @@
-import { TasksBoard } from "./tasks-board.js";
+import { TasksBoard } from "../tasks-board.js";
 
-window.tasksBoard = new TasksBoard({
+const tasksBoard = new TasksBoard({
   rootEl: document.querySelector("[data-tasks-board]"),
   lists: [
     {
@@ -14,3 +14,7 @@ window.tasksBoard = new TasksBoard({
     }
   ]
 });
+
+// setInterval(() => {
+//   tasksBoard.addList({ name: new Date().toLocaleTimeString()});
+// }, 2000); 
