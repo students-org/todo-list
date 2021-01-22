@@ -1,4 +1,4 @@
-import { TasksBoard } from "../tasks-board.js";
+import { TasksBoard } from "./scripts/tasks-board";
 
 const tasksBoard = new TasksBoard({
   rootEl: document.querySelector("[data-tasks-board]"),

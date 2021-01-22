@@ -1,4 +1,4 @@
-import { TasksList } from '../tasks-list.js';
+import { TasksList } from './tasks-list';
 
 export class TasksBoard {
   constructor({ rootEl, lists = [] }) {
