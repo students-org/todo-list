@@ -17,24 +17,28 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	padding: 80px 16px 16px;
+	padding: 16px 16px 16px;
 	background: #cfcdab;
 }
 
 .todo {
 	display: flex;
-	align-items: center;
 	flex-direction: column;
-	max-width: 700px;
+	max-width: 450px;
 	margin: auto;
 	border-radius: 8px;
 	overflow: hidden;
 	box-shadow: 0 0 1em black;
 }
 
-.todo__title {
+.header {
 	padding: 16px;
-	text-align: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.todo__title {	
+	text-align: left;
 }
 
 .todo-form {
