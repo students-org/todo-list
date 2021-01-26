@@ -71,7 +71,16 @@ export class TasksList {
   getHTML() {
     return `
       <div data-tasks-list=${this.id} class="todo">
-        <h2 class="todo__title">${this.name}</h2>
+        <div class="header">
+          <h2 class="todo__title">${this.name}</h2>
+          <button
+            data-delete-btn
+            class="button"
+            title="Удалить cписок"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
   
         <form data-task-form class="todo-form todo__form">
           <input

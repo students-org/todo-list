@@ -1,4 +1,6 @@
 import { TasksBoard } from "./scripts/tasks-board";
+import { ModalsProvider } from 'ui-modal';
+ 
 
 const tasksBoard = new TasksBoard({
   rootEl: document.querySelector("[data-tasks-board]"),
@@ -13,6 +15,10 @@ const tasksBoard = new TasksBoard({
       ]
     }
   ]
+});
+
+const modalProvider = new ModalsProvider ({
+
 });
 
 // setInterval(() => {
